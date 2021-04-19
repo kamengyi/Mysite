@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}首页{% endblock title %}
+
+{% block content %}
+<div class='jumbotron p-4 p-md-5'>
+    <div class='col-md-6 px-0 text-white'>
+        <h1 class='display-4 font-italic'>My records</h1>
+        <p class='lead my-3'>my records</p>
+        <p class='lead mb-0'>
+            <a href='#'>my records</a>
+        </p>
+    </div>
+</div>
+<div class='row mb-2'>
+    <main class='container'>
+        <div class='row'>
+            <div class='col-md-8 blog-main'>
+                <h3 class='pb-4 mb-4 border-bottom'>文章列表</h3>
+                {% if article_list %}
+                    {% for article in article_list %}
+                    <h2 class='blog-post-title'>{{ article.title }}</h2>
+                    <p class='blog-post-date'>{{ article.created }}</p>
+                    <p>{{ article.body|slice:10 }}</p>
+                    {% endfor %}
+                {% else %}
+                    <h2 class='blog-post-title'>空</h2>
+                    <p class='blog-post-date'>空</p>
+                {% endif %}
+            </div>
+        </div>
+    <main>
+</div>
+{% endblock content %}

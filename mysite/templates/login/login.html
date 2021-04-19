@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}登录{% endblock title %}
+
+{% block content %}
+<div class='LR'>
+    <form class='form-LR' method='post'>
+        {% if message %}
+        <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+            {{ message }}
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+            </button>
+        </div>
+        {% endif %}
+        {% csrf_token %}
+        <h3 style='text-align: center;'>登录</h3>
+        <div class='form-group'>
+            <label for='username'>用户名:</label>
+            <input class='form-control' type='text' id='username' name='username' autocomplete='off' required>
+        </div>
+        <div class='form-group'>
+            <label for='inputPwd'>密码:</label>
+            <input class='form-control' type='password' id='inputPwd' name='password' autocomplete='off' required>
+        </div>
+        <div class='form-group'>
+            <label for='captcha'>验证码:</label>
+            {{ login_form.captcha }}
+        </div>
+        <div class='form-inline'>
+            <p class='text-align mr-auto my-1'>没有账号?点击<a href='{% url "register" %}'>注册</a></p>
+            <button type='submit' class='btn btn-success px-5'>登录</button>
+        </div>
+    </form>
+</div>
+{% block script %}
+<script>
+    $(document).ready(function() {
+        $('#LRhidden').hide();
+    });
+</script>
+{% endblock script %}
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}文章详情{% endblock %}
+
+{% block content %}
+<div class="row">
+    <h2 class="col-12"></h2>
+    <p class='col-12'><span>作者: {{ article.user }}</span></p>
+    <div class="col-12">{{ article.body|safe }}</div>
+</div>
+{% endblock %}

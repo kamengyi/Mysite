@@ -1,0 +1,32 @@
+<div class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'index' %}">卡蒙</a>
+    <button class="navbar-toggler" type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarNav" class="collapse navbar-collapse">
+        <div class="navbar">
+            <a class="nav-item nav-link nav-item-padding" href="#">技术</a>
+            <a class="nav-item nav-link nav-item-padding" href="#">生活</a>
+            <a class="nav-item nav-link nav-item-padding" href="#">其他</a>
+            <a class="nav-item nav-link nav-item-padding" href="#">关于我</a>
+        </div>
+    </div>
+    <!-- id='LRhidden'用于在登录和注册页面隐藏 -->
+    <div class='ml-auto' id='LRhidden'>
+        <a class='btn btn-success btn-sm' href='{% url "article:article_create" %}' style="color: #fff!important">写点什么</a>
+        {% if current_user %}
+        <span class='dropdown mx-3'>
+            <a class='dropdown-toggle' href='#' id='dropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                {{ current_user.username }}
+            </a>
+            <div class='dropdown-menu' aria-labelledby='dropdownMenuLink'>
+                <a class='dropdown-item' href='{% url "logout" %}'>退出登录</a>
+            </div>
+        </span>
+        {% else %}
+        <a class='ml-2 mr-1' href='{% url "login" %}'>登录</a>
+        <span>|</span>
+        <a class='mx-1' href='{% url "register" %}'>注册</a>
+        {% endif %}
+    </div>
+</div>
